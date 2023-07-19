@@ -23,7 +23,6 @@ const Navbar = () => {
 
     fetchData();
   }, []);
-  console.log(user);
 
   useEffect(() => {
     const handleScroll = () => {

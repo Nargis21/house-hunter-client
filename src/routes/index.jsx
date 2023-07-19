@@ -5,6 +5,7 @@ import NotFound from "../pages/NotFound";
 import Home from "../pages/Home";
 import SignUp from "../pages/SignUp";
 import Dashboard from "../pages/Dashboard";
+import RequireAuth from "../pages/RequireAuth";
 const routes = createBrowserRouter([
   {
     path: "/",
@@ -24,7 +25,11 @@ const routes = createBrowserRouter([
       },
       {
         path: "/dashboard",
-        element: <Dashboard />,
+        element: (
+          <RequireAuth>
+            <Dashboard />
+          </RequireAuth>
+        ),
       },
     ],
   },

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import House from "../components/House";
+import { Navigate, useLocation } from "react-router-dom";
 import getAuth from "../hooks/getAuthUser";
 
-const Dashboard = () => {
+const RequireAuth = ({ children }) => {
   const [user, setUser] = useState(false);
   useEffect(() => {
     async function fetchData() {
@@ -14,7 +14,14 @@ const Dashboard = () => {
 
     fetchData();
   }, []);
-  return <div>{user?.role === "owner" ? <House></House> : "hello"}</div>;
+  console.log(user);
+  const location = useLocation();
+
+  if (!user) {
+    return <Navigate to="/login"></Navigate>;
+  }
+
+  return children;
 };
 
-export default Dashboard;
+export default RequireAuth;
