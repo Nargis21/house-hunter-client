@@ -53,9 +53,9 @@ const Login = () => {
 
   useEffect(() => {
     if (token) {
-      navigate(from, { replace: true });
+      navigate("/dashboard");
     }
-  }, [token, from, navigate]);
+  }, [token, navigate]);
 
   return (
     <div className="flex lg:h-screen justify-center items-center">
