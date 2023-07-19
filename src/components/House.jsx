@@ -4,10 +4,12 @@ import Loading from "../utils/Loading";
 import HouseRow from "./HouseRow";
 import DeleteHouseModal from "./DeleteHouseModal";
 import AddHouseModal from "./AddHouseModal";
+import EditHouseModal from "./EditHouseModal";
 
 const Dashboard = () => {
   const [deleteConfirm, setDeleteConfirm] = useState(null);
   const [addConfirm, setAddConfirm] = useState(null);
+  const [editConfirm, setEditConfirm] = useState(null);
 
   const { data, isLoading, refetch } = useQuery("data", () =>
     fetch("http://localhost:5000/api/v1/houses/getOwned", {
@@ -40,6 +42,7 @@ const Dashboard = () => {
               <thead>
                 <tr>
                   <th>Index</th>
+                  <th>Image</th>
                   <th>Name</th>
                   <th>City</th>
                   <th>Bed Rooms</th>
@@ -56,6 +59,7 @@ const Dashboard = () => {
                     house={house}
                     index={index}
                     refetch={refetch}
+                    setEditConfirm={setEditConfirm}
                     setDeleteConfirm={setDeleteConfirm}
                   ></HouseRow>
                 ))}
@@ -69,6 +73,13 @@ const Dashboard = () => {
             setDeleteConfirm={setDeleteConfirm}
             refetch={refetch}
           ></DeleteHouseModal>
+        )}
+        {editConfirm && (
+          <EditHouseModal
+            editConfirm={editConfirm}
+            setEditConfirm={setEditConfirm}
+            refetch={refetch}
+          ></EditHouseModal>
         )}
       </div>
       {addConfirm && (
