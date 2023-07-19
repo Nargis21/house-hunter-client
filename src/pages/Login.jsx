@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Loading from "../utils/Loading";
+import getAuth from "../hooks/getAuthUser";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -47,13 +48,14 @@ const Login = () => {
           localStorage.setItem("accessToken", accessToken);
           reset();
           toast.success("Logged In!");
+          getAuth();
         }
       });
   };
 
   useEffect(() => {
     if (token) {
-      navigate("/dashboard");
+      window.location.href = "/dashboard";
     }
   }, [token, navigate]);
 

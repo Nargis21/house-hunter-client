@@ -3,9 +3,11 @@ import { useQuery } from "react-query";
 import Loading from "../utils/Loading";
 import HouseRow from "./HouseRow";
 import DeleteHouseModal from "./DeleteHouseModal";
+import AddHouseModal from "./AddHouseModal";
 
 const Dashboard = () => {
   const [deleteConfirm, setDeleteConfirm] = useState(null);
+  const [addConfirm, setAddConfirm] = useState(null);
 
   const { data, isLoading, refetch } = useQuery("data", () =>
     fetch("http://localhost:5000/api/v1/houses/getOwned", {
@@ -21,9 +23,15 @@ const Dashboard = () => {
   }
   return (
     <div className="p-10">
-      <div>
+      <div className="flex justify-between items-center mb-6">
         <h1 className="text-2xl font-bold">Your ALL Houses</h1>
-        <button></button>
+        <label
+          onClick={() => setAddConfirm(1)}
+          for="add-house-modal"
+          class="btn btn-primary modal-button"
+        >
+          Add New House
+        </label>
       </div>
       <div>
         <div className="border">
@@ -42,7 +50,7 @@ const Dashboard = () => {
                 </tr>
               </thead>
               <tbody>
-                {data.data.map((house, index) => (
+                {data?.data?.map((house, index) => (
                   <HouseRow
                     key={house._id}
                     house={house}
@@ -63,6 +71,12 @@ const Dashboard = () => {
           ></DeleteHouseModal>
         )}
       </div>
+      {addConfirm && (
+        <AddHouseModal
+          setAddConfirm={setAddConfirm}
+          refetch={refetch}
+        ></AddHouseModal>
+      )}
     </div>
   );
 };

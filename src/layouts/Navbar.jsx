@@ -2,9 +2,28 @@ import { Link } from "react-router-dom";
 import logo from "../assets/images/logo.png";
 import { useEffect, useState } from "react";
 import "../styles/navbar.css";
+import getAuth from "../hooks/getAuthUser";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
+  const handleLogout = () => {
+    localStorage.removeItem("accessToken");
+    window.location.href = "/";
+  };
+
   const [navbarBgBlur, setNavbarBgBlur] = useState(false);
+  const [user, setUser] = useState(false);
+  useEffect(() => {
+    async function fetchData() {
+      const user = await getAuth();
+      if (user) {
+        setUser(user);
+      }
+    }
+
+    fetchData();
+  }, []);
+  console.log(user);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -64,12 +83,20 @@ const Navbar = () => {
 
       <div className="navbar-end ">
         <ul className="menu menu-horizontal px-1 hidden lg:flex text-gray-700 font-semibold text-[16px]">
-          <li>
-            <Link to="/signup">Sign Up</Link>
-          </li>
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
+          {user ? (
+            <li>
+              <button onClick={handleLogout}> Logout</button>
+            </li>
+          ) : (
+            <>
+              <li>
+                <Link to="/signup">Sign Up</Link>
+              </li>
+              <li>
+                <Link to="/login">Login</Link>
+              </li>
+            </>
+          )}
           <li>
             <Link to="/dashboard">Dashboard</Link>
           </li>
