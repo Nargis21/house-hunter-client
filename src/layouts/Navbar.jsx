@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import logo from "../assets/images/logo.png";
 import { useEffect, useState } from "react";
-import "../styles/navbar.css";
+// import "../styles/navbar.css";
 import getAuth from "../hooks/getAuthUser";
 import { toast } from "react-toastify";
 
@@ -24,24 +24,20 @@ const Navbar = () => {
     fetchData();
   }, []);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const isScrolled = window.scrollY > 0;
-      setNavbarBgBlur(isScrolled);
-    };
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     const isScrolled = window.scrollY > 0;
+  //     setNavbarBgBlur(isScrolled);
+  //   };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+  //   window.addEventListener("scroll", handleScroll);
+  //   return () => {
+  //     window.removeEventListener("scroll", handleScroll);
+  //   };
+  // }, []);
 
   return (
-    <div
-      className={`navbar ${
-        navbarBgBlur ? "bg-blur" : "bg-base-100"
-      } lg:px-6 md:px-4 sticky top-0 shadow-lg`}
-    >
+    <div className={`navbar lg:px-6 md:px-4 shadow-lg`}>
       <div className="navbar-start ">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">

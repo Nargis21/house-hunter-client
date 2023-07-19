@@ -26,9 +26,10 @@ const routes = createBrowserRouter([
       {
         path: "/dashboard",
         element: (
-          <RequireAuth>
-            <Dashboard />
-          </RequireAuth>
+          // <RequireAuth>
+          //   <Dashboard />
+          // </RequireAuth>
+          <Dashboard></Dashboard>
         ),
       },
     ],

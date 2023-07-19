@@ -14,7 +14,7 @@ const RequireAuth = ({ children }) => {
 
     fetchData();
   }, []);
-  console.log(user);
+  console.log();
   const location = useLocation();
 
   if (!user) {
