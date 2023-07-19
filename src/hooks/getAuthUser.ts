@@ -5,11 +5,14 @@ export default async function getAuth() {
   }
 
   try {
-    const response = await fetch("http://localhost:5000/api/v1/auth/getAuth", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    const response = await fetch(
+      "https://house-hunter-server-tawny.vercel.app/api/v1/auth/getAuth",
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
 
     if (response.ok) {
       const data = await response.json();

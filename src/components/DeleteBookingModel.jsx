@@ -5,12 +5,15 @@ import { toast } from "react-toastify";
 const DeleteBookingModal = ({ deleteConfirm, setDeleteConfirm, refetch }) => {
   const { _id } = deleteConfirm;
   const handleProductDelete = () => {
-    fetch(`http://localhost:5000/api/v1/bookings/${_id}`, {
-      method: "DELETE",
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-    })
+    fetch(
+      `https://house-hunter-server-tawny.vercel.app/api/v1/bookings/${_id}`,
+      {
+        method: "DELETE",
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {

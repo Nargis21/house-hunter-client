@@ -60,7 +60,7 @@ const AddHouseModal = ({ setAddConfirm, refetch }) => {
             picture: img,
           };
           console.log(houseInfo);
-          fetch("http://localhost:5000/api/v1/houses", {
+          fetch("https://house-hunter-server-tawny.vercel.app/api/v1/houses", {
             method: "POST",
             headers: {
               "content-type": "application/json",

@@ -29,7 +29,7 @@ const SignUp = () => {
     };
     console.log(currentUser);
 
-    fetch("http://localhost:5000/api/v1/auth/signup", {
+    fetch("https://house-hunter-server-tawny.vercel.app/api/v1/auth/signup", {
       method: "POST",
       headers: {
         "content-type": "application/json",

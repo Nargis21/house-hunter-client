@@ -60,14 +60,17 @@ const EditHouseModal = ({ editConfirm, setEditConfirm, refetch }) => {
         owner: user?._id,
       };
       console.log(houseInfo);
-      fetch(`http://localhost:5000/api/v1/houses/${_id}`, {
-        method: "PATCH",
-        headers: {
-          "content-type": "application/json",
-          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
-        body: JSON.stringify(houseInfo),
-      })
+      fetch(
+        `https://house-hunter-server-tawny.vercel.app/api/v1/houses/${_id}`,
+        {
+          method: "PATCH",
+          headers: {
+            "content-type": "application/json",
+            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+          body: JSON.stringify(houseInfo),
+        }
+      )
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
@@ -108,14 +111,19 @@ const EditHouseModal = ({ editConfirm, setEditConfirm, refetch }) => {
               picture: img,
             };
             console.log(houseInfo);
-            fetch(`http://localhost:5000/api/v1/houses/${_id}`, {
-              method: "PATCH",
-              headers: {
-                "content-type": "application/json",
-                authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-              },
-              body: JSON.stringify(houseInfo),
-            })
+            fetch(
+              `https://house-hunter-server-tawny.vercel.app/api/v1/houses/${_id}`,
+              {
+                method: "PATCH",
+                headers: {
+                  "content-type": "application/json",
+                  authorization: `Bearer ${localStorage.getItem(
+                    "accessToken"
+                  )}`,
+                },
+                body: JSON.stringify(houseInfo),
+              }
+            )
               .then((res) => res.json())
               .then((data) => {
                 console.log(data);

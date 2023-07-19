@@ -6,7 +6,7 @@ const Home = () => {
   const [addConfirm, setAddConfirm] = useState(null);
   const [houses, setHouses] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/api/v1/houses")
+    fetch("https://house-hunter-server-tawny.vercel.app/api/v1/houses")
       .then((res) => res.json())
       .then((data) => setHouses(data));
   }, []);

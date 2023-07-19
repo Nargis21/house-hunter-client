@@ -12,7 +12,7 @@ const Booking = () => {
   const [deleteConfirm, setDeleteConfirm] = useState(null);
 
   const { data, isLoading, refetch } = useQuery("data", () =>
-    fetch("http://localhost:5000/api/v1/bookings", {
+    fetch("https://house-hunter-server-tawny.vercel.app/api/v1/bookings", {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,

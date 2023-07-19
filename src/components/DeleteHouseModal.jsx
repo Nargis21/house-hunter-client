@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 const DeleteHouseModal = ({ deleteConfirm, setDeleteConfirm, refetch }) => {
   const { _id } = deleteConfirm;
   const handleProductDelete = () => {
-    fetch(`http://localhost:5000/api/v1/houses/${_id}`, {
+    fetch(`https://house-hunter-server-tawny.vercel.app/api/v1/houses/${_id}`, {
       method: "DELETE",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,

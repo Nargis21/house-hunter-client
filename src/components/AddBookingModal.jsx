@@ -40,7 +40,7 @@ const AddBookingModal = ({ addConfirm, setAddConfirm }) => {
       house: _id,
     };
     console.log(bookingInfo);
-    fetch("http://localhost:5000/api/v1/bookings", {
+    fetch("https://house-hunter-server-tawny.vercel.app/api/v1/bookings", {
       method: "POST",
       headers: {
         "content-type": "application/json",

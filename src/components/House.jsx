@@ -12,12 +12,15 @@ const Dashboard = () => {
   const [editConfirm, setEditConfirm] = useState(null);
 
   const { data, isLoading, refetch } = useQuery("data", () =>
-    fetch("http://localhost:5000/api/v1/houses/getOwned", {
-      method: "GET",
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-    }).then((res) => res.json())
+    fetch(
+      "https://house-hunter-server-tawny.vercel.app/api/v1/houses/getOwned",
+      {
+        method: "GET",
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      }
+    ).then((res) => res.json())
   );
 
   if (isLoading) {
